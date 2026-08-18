@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homely | Premium Real Estate Agency</title>
+    <meta name="description" content="Discover premium luxury properties with Homely Agency. We make finding your dream home, villa, or apartment effortless.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ==========================================
+         1. PRELOADER
+         ========================================== -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-panel left-panel"></div>
+        <div class="preloader-panel right-panel"></div>
+        <div class="loader-content">
+            <div class="loader-logo">
+                <i class="fa-solid fa-house-chimney-window"></i>
+            </div>
+            <h1 class="loader-title">HOMELY</h1>
+            <p class="loader-subtitle">Luxurious Living Awaits</p>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         2. HEADER & NAVIGATION
+         ========================================== -->
+    <header class="header" id="header">
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-house-chimney-window logo-icon"></i>
+                <span class="logo-text">HOMELY</span>
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="#properties" class="nav-link">Properties</a></li>
+                    <li class="nav-item"><a href="#testimonials" class="nav-link">Reviews</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="#contact" class="btn btn-primary btn-nav">Contact Us</a>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                    <span class="bar bar-1"></span>
+                    <span class="bar bar-2"></span>
+                    <span class="bar bar-3"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ==========================================
+             3. HERO SECTION
+             ========================================== -->
+        <section id="home" class="hero-section">
+            <div class="hero-bg">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=80" alt="Premium Modern Villa with Pool" id="hero-bg-img">
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <span class="hero-badge gsap-hero-fade"><i class="fa-solid fa-circle-check"></i> Verified Elite Brokerage</span>
+                    <h1 class="hero-title gsap-hero-fade">Find Your Perfect Sanctuary</h1>
+                    <p class="hero-description gsap-hero-fade">Discover a handpicked collection of luxury homes, modern villas, and elegant apartments in premium locations worldwide.</p>
+                </div>
+
+                <!-- Modern Search / Filter Panel -->
+                <div class="search-panel gsap-hero-panel">
+                    <div class="search-tabs">
+                        <button class="search-tab active" data-type="buy">Buy</button>
+                        <button class="search-tab" data-type="rent">Rent</button>
+                    </div>
+                    <form class="search-form" id="search-form">
+                        <div class="form-group-grid">
+                            <div class="form-group">
+                                <label for="search-location"><i class="fa-solid fa-location-dot"></i> Location</label>
+                                <input type="text" id="search-location" placeholder="Where do you want to live?">
+                            </div>
+                            <div class="form-group">
+                                <label for="property-type"><i class="fa-solid fa-house"></i> Property Type</label>
+                                <select id="property-type">
+                                    <option value="all">All Types</option>
+                                    <option value="villa">Villa</option>
+                                    <option value="house">House</option>
+                                    <option value="apartment">Apartment</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="price-range"><i class="fa-solid fa-money-bill-wave"></i> Price Range</label>
+                                <select id="price-range">
+                                    <option value="any">Any Price</option>
+                                    <option value="low">$100k - $500k</option>
+                                    <option value="medium">$500k - $1.5M</option>
+                                    <option value="high">$1.5M+</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-secondary btn-search">
+                            <i class="fa-solid fa-magnifying-glass"></i> <span>Search Properties</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             4. STATS / HIGHLIGHTS SECTION
+             ========================================== -->
+        <section class="stats-section section-padding" id="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item gsap-stat-card">
+                        <div class="stat-icon-wrapper">
+                            <i class="fa-solid fa-house-circle-check"></i>
+                        </div>
+                        <div class="stat-number-wrapper">
+                            <span class="stat-number" data-target="1200">0</span><span class="stat-plus">+</span>
+                        </div>
+                        <p class="stat-label">Properties Listed</p>
+                    </div>
+                    <div class="stat-item gsap-stat-card">
+                        <div class="stat-icon-wrapper">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+                        <div class="stat-number-wrapper">
+                            <span class="stat-number" data-target="950">0</span><span class="stat-plus">+</span>
+                        </div>
+                        <p class="stat-label">Properties Sold</p>
+                    </div>
+                    <div class="stat-item gsap-stat-card">
+                        <div class="stat-icon-wrapper">
+                            <i class="fa-solid fa-face-smile"></i>
+                        </div>
+                        <div class="stat-number-wrapper">
+                            <span class="stat-number" data-target="500">0</span><span class="stat-plus">+</span>
+                        </div>
+                        <p class="stat-label">Happy Clients</p>
+                    </div>
+                    <div class="stat-item gsap-stat-card">
+                        <div class="stat-icon-wrapper">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div class="stat-number-wrapper">
+                            <span class="stat-number" data-target="15">0</span><span class="stat-plus">+</span>
+                        </div>
+                        <p class="stat-label">Years of Trust</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             5. ABOUT US SECTION
+             ========================================== -->
+        <section id="about" class="about-section section-padding bg-light">
+            <div class="container about-grid">
+                <div class="about-images">
+                    <div class="image-box primary-box parallax-img-primary">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=700&q=80" alt="Beautiful Luxury Home Interior">
+                    </div>
+                    <div class="image-box secondary-box parallax-img-secondary">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80" alt="Luxury Home Deck and Pool Side">
+                    </div>
+                    <div class="experience-badge gsap-about-badge">
+                        <span class="badge-num">15+</span>
+                        <span class="badge-txt">Years Excellence</span>
+                    </div>
+                </div>
+                
+                <div class="about-content">
+                    <span class="section-badge gsap-about-text">Who We Are</span>
+                    <h2 class="section-title gsap-about-text">Redefining The Modern Luxury Living Experience</h2>
+                    <p class="section-desc gsap-about-text">At Homely, we believe a home is not just a place to live; it is a sanctuary, an investment, and a legacy. For over a decade, we have matched discerning clients with the most extraordinary properties in the world.</p>
+                    
+                    <ul class="about-features">
+                        <li class="gsap-about-feature">
+                            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                            <div class="feature-text">
+                                <h3>Secure & Trustworthy</h3>
+                                <p>Every listing in our portfolio undergoes thorough verification for complete transparency.</p>
+                            </div>
+                        </li>
+                        <li class="gsap-about-feature">
+                            <div class="feature-icon"><i class="fa-solid fa-user-tie"></i></div>
+                            <div class="feature-text">
+                                <h3>Elite Concierge Agents</h3>
+                                <p>Our specialized agents are available 24/7 to guide you through a seamless buying experience.</p>
+                            </div>
+                        </li>
+                        <li class="gsap-about-feature">
+                            <div class="feature-icon"><i class="fa-solid fa-gem"></i></div>
+                            <div class="feature-text">
+                                <h3>Premium Prime Listings</h3>
+                                <p>Access exclusive properties that are not available in public listings databases.</p>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <a href="#properties" class="btn btn-primary gsap-about-text">Browse Properties</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             6. SERVICES SECTION
+             ========================================== -->
+        <section id="services" class="services-section section-padding">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-badge gsap-service-header">Our Services</span>
+                    <h2 class="section-title text-center gsap-service-header">We Provide Premium Solutions</h2>
+                    <p class="section-desc text-center max-w-600 gsap-service-header">From luxury acquisitions to property management, our comprehensive solutions cover all facets of high-end real estate.</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card gsap-service-card">
+                        <div class="service-icon"><i class="fa-solid fa-house-laptop"></i></div>
+                        <h3>Buying Consulting</h3>
+                        <p>Receive comprehensive guidance in identifying premium investments tailored specifically to your financial goals and styling choices.</p>
+                        <a href="#contact" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="service-card gsap-service-card">
+                        <div class="service-icon"><i class="fa-solid fa-key"></i></div>
+                        <h3>Selling Strategies</h3>
+                        <p>Utilize our advanced visual marketing tools and elite broker network to position and sell your property for maximum return.</p>
+                        <a href="#contact" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="service-card gsap-service-card">
+                        <div class="service-icon"><i class="fa-solid fa-hotel"></i></div>
+                        <h3>Property Management</h3>
+                        <p>Enjoy passive real-estate ownership as our professional managers handle renting, maintenance, and compliance operations.</p>
+                        <a href="#contact" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             7. FEATURED PROPERTIES SECTION
+             ========================================== -->
+        <section id="properties" class="properties-section section-padding bg-light">
+            <div class="container">
+                <div class="section-header flex-header">
+                    <div class="gsap-prop-header">
+                        <span class="section-badge">Featured Listings</span>
+                        <h2 class="section-title">Explore Elite Properties</h2>
+                    </div>
+                    <div class="property-filters gsap-prop-header" id="property-filters">
+                        <button class="filter-btn active" data-filter="all">All Properties</button>
+                        <button class="filter-btn" data-filter="villa">Villas</button>
+                        <button class="filter-btn" data-filter="house">Houses</button>
+                        <button class="filter-btn" data-filter="apartment">Apartments</button>
+                    </div>
+                </div>
+                
+                <div class="properties-grid" id="properties-grid">
+                    <!-- Property 1 -->
+                    <div class="property-card gsap-prop-card" data-category="villa">
+                        <div class="property-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80" alt="Serene Horizon Estate" class="property-img">
+                            <span class="property-badge sale">For Sale</span>
+                            <span class="property-tag">Villa</span>
+                            <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                        <div class="property-details">
+                            <span class="property-price">$2,450,000</span>
+                            <h3 class="property-title">Serene Horizon Estate</h3>
+                            <p class="property-location"><i class="fa-solid fa-location-dot"></i> Malibu, California</p>
+                            <div class="property-features">
+                                <span><i class="fa-solid fa-bed"></i> 5 Beds</span>
+                                <span><i class="fa-solid fa-bath"></i> 6 Baths</span>
+                                <span><i class="fa-solid fa-maximize"></i> 6,200 sqft</span>
+                            </div>
+                            <hr class="card-divider">
+                            <div class="property-footer">
+                                <div class="agent-info">
+                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&h=100&q=80" alt="Marcus Vance" class="agent-avatar">
+                                    <span class="agent-name">Marcus Vance</span>
+                                </div>
+                                <a href="#contact" class="btn btn-outline btn-sm">Inquire</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 2 -->
+                    <div class="property-card gsap-prop-card" data-category="house">
+                        <div class="property-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Evergreen Cozy House" class="property-img">
+                            <span class="property-badge rent">For Rent</span>
+                            <span class="property-tag">House</span>
+                            <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                        <div class="property-details">
+                            <span class="property-price">$8,500/mo</span>
+                            <h3 class="property-title">Evergreen Manor</h3>
+                            <p class="property-location"><i class="fa-solid fa-location-dot"></i> Seattle, Washington</p>
+                            <div class="property-features">
+                                <span><i class="fa-solid fa-bed"></i> 4 Beds</span>
+                                <span><i class="fa-solid fa-bath"></i> 3 Baths</span>
+                                <span><i class="fa-solid fa-maximize"></i> 3,400 sqft</span>
+                            </div>
+                            <hr class="card-divider">
+                            <div class="property-footer">
+                                <div class="agent-info">
+                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&h=100&q=80" alt="Elena Rostova" class="agent-avatar">
+                                    <span class="agent-name">Elena Rostova</span>
+                                </div>
+                                <a href="#contact" class="btn btn-outline btn-sm">Inquire</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 3 -->
+                    <div class="property-card gsap-prop-card" data-category="villa">
+                        <div class="property-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Modern Glass Villa" class="property-img">
+                            <span class="property-badge sale">For Sale</span>
+                            <span class="property-tag">Villa</span>
+                            <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                        <div class="property-details">
+                            <span class="property-price">$4,100,000</span>
+                            <h3 class="property-title">Glass Oasis Pavilion</h3>
+                            <p class="property-location"><i class="fa-solid fa-location-dot"></i> Miami, Florida</p>
+                            <div class="property-features">
+                                <span><i class="fa-solid fa-bed"></i> 6 Beds</span>
+                                <span><i class="fa-solid fa-bath"></i> 7 Baths</span>
+                                <span><i class="fa-solid fa-maximize"></i> 7,800 sqft</span>
+                            </div>
+                            <hr class="card-divider">
+                            <div class="property-footer">
+                                <div class="agent-info">
+                                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=100&h=100&q=80" alt="Derrick Cole" class="agent-avatar">
+                                    <span class="agent-name">Derrick Cole</span>
+                                </div>
+                                <a href="#contact" class="btn btn-outline btn-sm">Inquire</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 4 -->
+                    <div class="property-card gsap-prop-card" data-category="apartment">
+                        <div class="property-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Minimalist Skyline Apartment" class="property-img">
+                            <span class="property-badge sale">For Sale</span>
+                            <span class="property-tag">Apartment</span>
+                            <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                        <div class="property-details">
+                            <span class="property-price">$1,250,000</span>
+                            <h3 class="property-title">Aether Penthouse Suite</h3>
+                            <p class="property-location"><i class="fa-solid fa-location-dot"></i> Manhattan, New York</p>
+                            <div class="property-features">
+                                <span><i class="fa-solid fa-bed"></i> 2 Beds</span>
+                                <span><i class="fa-solid fa-bath"></i> 2 Baths</span>
+                                <span><i class="fa-solid fa-maximize"></i> 1,950 sqft</span>
+                            </div>
+                            <hr class="card-divider">
+                            <div class="property-footer">
+                                <div class="agent-info">
+                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&h=100&q=80" alt="Elena Rostova" class="agent-avatar">
+                                    <span class="agent-name">Elena Rostova</span>
+                                </div>
+                                <a href="#contact" class="btn btn-outline btn-sm">Inquire</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 5 -->
+                    <div class="property-card gsap-prop-card" data-category="apartment">
+                        <div class="property-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80" alt="Cosy Modern Kitchen Residence" class="property-img">
+                            <span class="property-badge rent">For Rent</span>
+                            <span class="property-tag">Apartment</span>
+                            <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                        <div class="property-details">
+                            <span class="property-price">$6,200/mo</span>
+                            <h3 class="property-title">Urban Vista Loft</h3>
+                            <p class="property-location"><i class="fa-solid fa-location-dot"></i> Chicago, Illinois</p>
+                            <div class="property-features">
+                                <span><i class="fa-solid fa-bed"></i> 3 Beds</span>
+                                <span><i class="fa-solid fa-bath"></i> 3.5 Baths</span>
+                                <span><i class="fa-solid fa-maximize"></i> 2,800 sqft</span>
+                            </div>
+                            <hr class="card-divider">
+                            <div class="property-footer">
+                                <div class="agent-info">
+                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&h=100&q=80" alt="Marcus Vance" class="agent-avatar">
+                                    <span class="agent-name">Marcus Vance</span>
+                                </div>
+                                <a href="#contact" class="btn btn-outline btn-sm">Inquire</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 6 -->
+                    <div class="property-card gsap-prop-card" data-category="villa">
+                        <div class="property-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80" alt="Mediterranean Style Villa" class="property-img">
+                            <span class="property-badge sale">For Sale</span>
+                            <span class="property-tag">Villa</span>
+                            <button class="wishlist-btn" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                        <div class="property-details">
+                            <span class="property-price">$5,800,000</span>
+                            <h3 class="property-title">Azure Sanctuary Villa</h3>
+                            <p class="property-location"><i class="fa-solid fa-location-dot"></i> Aspen, Colorado</p>
+                            <div class="property-features">
+                                <span><i class="fa-solid fa-bed"></i> 7 Beds</span>
+                                <span><i class="fa-solid fa-bath"></i> 8 Baths</span>
+                                <span><i class="fa-solid fa-maximize"></i> 9,500 sqft</span>
+                            </div>
+                            <hr class="card-divider">
+                            <div class="property-footer">
+                                <div class="agent-info">
+                                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=100&h=100&q=80" alt="Derrick Cole" class="agent-avatar">
+                                    <span class="agent-name">Derrick Cole</span>
+                                </div>
+                                <a href="#contact" class="btn btn-outline btn-sm">Inquire</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             8. TESTIMONIALS SECTION
+             ========================================== -->
+        <section id="testimonials" class="testimonials-section section-padding">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-badge gsap-test-anim">Testimonials</span>
+                    <h2 class="section-title text-center gsap-test-anim">What Our Clients Say</h2>
+                    <p class="section-desc text-center max-w-600 gsap-test-anim">Hear directly from the individuals and families who successfully upgraded their lifestyle with Homely.</p>
+                </div>
+                
+                <div class="testimonials-carousel-wrapper gsap-test-anim">
+                    <div class="testimonials-carousel" id="testimonials-carousel">
+                        <!-- Testimonial 1 -->
+                        <div class="testimonial-slide active">
+                            <div class="testimonial-content">
+                                <div class="rating-stars">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <blockquote class="testimonial-text">
+                                    "Homely made our luxury relocation completely effortless. Marcus's understanding of high-end properties in California enabled us to secure our dream Malibu estate off-market. Their support is unparalleled!"
+                                </blockquote>
+                                <div class="testimonial-user">
+                                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=100&h=100&q=80" alt="Alex Mercer" class="user-avatar">
+                                    <div class="user-details">
+                                        <h4 class="user-name">Alex Mercer</h4>
+                                        <p class="user-role">Founder, Mercer Global</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 2 -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-content">
+                                <div class="rating-stars">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <blockquote class="testimonial-text">
+                                    "The team's transparency and professionalism blew us away. Elena guided us through every single page of documentation for the Seattle house, and we finalized the contract in record time."
+                                </blockquote>
+                                <div class="testimonial-user">
+                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&h=100&q=80" alt="Dr. Sarah Jenkins" class="user-avatar">
+                                    <div class="user-details">
+                                        <h4 class="user-name">Dr. Sarah Jenkins</h4>
+                                        <p class="user-role">Chief of Medicine, Swedish Health</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 3 -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-content">
+                                <div class="rating-stars">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <blockquote class="testimonial-text">
+                                    "Securing a high-yield penthouse in Manhattan seemed daunting, but Homely provided key local statistics and properties that fit our criteria. Exceptional work!"
+                                </blockquote>
+                                <div class="testimonial-user">
+                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&h=100&q=80" alt="Michael Thorne" class="user-avatar">
+                                    <div class="user-details">
+                                        <h4 class="user-name">Michael Thorne</h4>
+                                        <p class="user-role">Managing Director, Thorne Capital</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-controls">
+                        <button class="carousel-btn prev-btn" id="prev-testimonial" aria-label="Previous review"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="carousel-btn next-btn" id="next-testimonial" aria-label="Next review"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+
+                    <div class="carousel-indicators" id="carousel-indicators">
+                        <!-- Indicators will be generated dynamically -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             9. CONTACT & NEWSLETTER SECTION
+             ========================================== -->
+        <section id="contact" class="contact-section section-padding bg-light">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info-panel" id="gsap-contact-info">
+                        <span class="section-badge">Get In Touch</span>
+                        <h2 class="section-title">Ready To Find Your Dream Property?</h2>
+                        <p class="contact-desc">Contact us today to schedule a private viewing, ask about our off-market properties, or consult with one of our area specialists.</p>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method-item">
+                                <div class="contact-method-icon"><i class="fa-solid fa-phone"></i></div>
+                                <div class="contact-method-details">
+                                    <h4>Call Us Directly</h4>
+                                    <p>+1 (800) 555-HOME</p>
+                                    <p>+1 (555) 234-5678</p>
+                                </div>
+                            </div>
+                            <div class="contact-method-item">
+                                <div class="contact-method-icon"><i class="fa-solid fa-envelope"></i></div>
+                                <div class="contact-method-details">
+                                    <h4>Send An Email</h4>
+                                    <p>concierge@homelyagency.com</p>
+                                    <p>support@homelyagency.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-method-item">
+                                <div class="contact-method-icon"><i class="fa-solid fa-location-dot"></i></div>
+                                <div class="contact-method-details">
+                                    <h4>Corporate Office</h4>
+                                    <p>750 Fifth Avenue, Suite 1200</p>
+                                    <p>New York, NY 10019</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Newsletter Mini Box -->
+                        <div class="newsletter-box">
+                            <h4>Subscribe to Newsletter</h4>
+                            <p>Get exclusive alerts for newly listed properties and market reports directly in your inbox.</p>
+                            <form class="newsletter-form" id="newsletter-form">
+                                <input type="email" placeholder="Enter your email" required aria-label="Email address">
+                                <button type="submit" class="btn btn-secondary btn-sm">Join</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-panel" id="gsap-contact-form">
+                        <form class="contact-form" id="contact-form-el">
+                            <h3>Schedule Consultation</h3>
+                            <p>Fill out the form and our concierge agent will contact you within 24 hours.</p>
+                            
+                            <div class="form-row">
+                                <div class="form-control-wrapper">
+                                    <label for="contact-name">Full Name</label>
+                                    <input type="text" id="contact-name" placeholder="John Doe" required>
+                                </div>
+                                <div class="form-control-wrapper">
+                                    <label for="contact-email">Email Address</label>
+                                    <input type="email" id="contact-email" placeholder="john@example.com" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-control-wrapper">
+                                    <label for="contact-phone">Phone Number</label>
+                                    <input type="tel" id="contact-phone" placeholder="+1 (555) 000-0000">
+                                </div>
+                                <div class="form-control-wrapper">
+                                    <label for="contact-interest">I am looking to...</label>
+                                    <select id="contact-interest">
+                                        <option value="buy">Buy a Luxury Property</option>
+                                        <option value="rent">Rent a Luxury Property</option>
+                                        <option value="sell">Sell My Luxury Property</option>
+                                        <option value="manage">Manage My Properties</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-control-wrapper">
+                                <label for="contact-message">Your Message</label>
+                                <textarea id="contact-message" rows="5" placeholder="Tell us more about your dream home requirements..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fa-solid fa-paper-plane"></i> <span>Send Message</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================
+         10. FOOTER SECTION
+         ========================================== -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo footer-logo">
+                    <i class="fa-solid fa-house-chimney-window logo-icon"></i>
+                    <span class="logo-text">HOMELY</span>
+                </a>
+                <p class="footer-desc">Homely is a global leader in luxury real estate, connecting elite clients with state-of-the-art properties around the globe.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#properties">Featured Properties</a></li>
+                    <li><a href="#testimonials">Client Reviews</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Locations</h3>
+                <ul>
+                    <li><a href="#properties">Beverly Hills, CA</a></li>
+                    <li><a href="#properties">Manhattan, NY</a></li>
+                    <li><a href="#properties">Miami Beach, FL</a></li>
+                    <li><a href="#properties">Aspen, CO</a></li>
+                    <li><a href="#properties">Hamptons, NY</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Corporate Info</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                    <li><a href="#">Agent Login</a></li>
+                    <li><a href="#contact">Career Opportunities</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container footer-bottom-flex">
+                <p>&copy; 2026 Homely Real Estate Agency. All Rights Reserved.</p>
+                <p>Designed with <i class="fa-solid fa-heart" style="color: var(--accent);"></i> for Premium Living.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP Core & ScrollTrigger Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
