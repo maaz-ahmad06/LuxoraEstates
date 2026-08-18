@@ -1003,11 +1003,38 @@ button, input, select, textarea {
     border-color: #CBD5E1;
 }
 
+.properties-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.properties-scroll-container {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 2rem;
+}
+
 .properties-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    display: flex;
+    flex-wrap: nowrap;
     gap: 2.2rem;
-    margin-top: 1rem;
+    width: max-content;
+    padding: 1rem 0;
+}
+
+.properties-grid .property-card {
+    width: 380px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .properties-grid .property-card {
+        width: 310px;
+    }
 }
 
 .property-card {

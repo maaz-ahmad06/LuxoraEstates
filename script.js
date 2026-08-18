@@ -225,6 +225,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     });
                 }
             });
+            
+            // Refresh ScrollTrigger calculations after card toggle transitions finish
+            setTimeout(() => {
+                ScrollTrigger.refresh();
+            }, 350);
         });
     });
 
@@ -395,7 +400,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     // ==========================================
-    // 11. PROPERTIES STAGGER REVEAL
+    // 11. PROPERTIES HORIZONTAL PIN SCROLL
     // ==========================================
     gsap.fromTo(".gsap-prop-header",
         { y: 30, opacity: 0 },
@@ -404,7 +409,6 @@ document.addEventListener("DOMContentLoaded", () => {
             opacity: 1,
             duration: 1,
             ease: "power3.out",
-            stagger: 0.15,
             scrollTrigger: {
                 trigger: ".properties-section",
                 start: "top 80%"
@@ -412,20 +416,38 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
-    gsap.fromTo(".gsap-prop-card",
-        { y: 60, opacity: 0 },
-        {
-            y: 0,
+    const grid = document.getElementById("properties-grid");
+    const scrollContainer = document.querySelector(".properties-scroll-container");
+
+    if (grid && scrollContainer) {
+        // Make cards inside the grid visible (GSAP will handle grid opacity and translation)
+        gsap.set(".gsap-prop-card", { opacity: 1 });
+        gsap.set(grid, { opacity: 0 });
+
+        // Fade in grid on section entrance
+        gsap.to(grid, {
             opacity: 1,
-            duration: 1.2,
-            ease: "power3.out",
-            stagger: 0.15,
+            duration: 0.6,
             scrollTrigger: {
                 trigger: ".properties-section",
-                start: "top 70%"
+                start: "top 75%"
             }
-        }
-    );
+        });
+
+        // Horizontal pin scroll timeline
+        gsap.to(grid, {
+            x: () => -(grid.scrollWidth - scrollContainer.clientWidth),
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".properties-section",
+                pin: true,
+                scrub: 1,
+                start: "top top",
+                end: () => `+=${grid.scrollWidth - scrollContainer.clientWidth}`,
+                invalidateOnRefresh: true
+            }
+        });
+    }
 
     // ==========================================
     // 12. TESTIMONIALS SLIDE-IN & ROTATION
