@@ -150,8 +150,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (navLinkEl) {
             ScrollTrigger.create({
                 trigger: section,
-                start: "top 140px",   // Trigger active state when top of section crosses header
-                end: "bottom 140px",  // Clear active state when section bottom leaves header area
+                start: "top 50%",   // Trigger active state when section top crosses screen center
+                end: "bottom 50%",  // Clear active state when section bottom leaves screen center
                 onEnter: () => {
                     navLinks.forEach(l => l.classList.remove("active"));
                     navLinkEl.classList.add("active");
