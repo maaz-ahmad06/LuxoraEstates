@@ -139,29 +139,30 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ==========================================
-    // 5. SCROLL SECTIONS ACTIVE LINK INDICATOR
+    // 5. SCROLL SECTIONS ACTIVE LINK INDICATOR (using ScrollTrigger)
     // ==========================================
     const sections = document.querySelectorAll("section[id]");
 
-    function scrollActiveIndicator() {
-        const scrollY = window.pageYOffset;
-
-        sections.forEach(current => {
-            const sectionHeight = current.offsetHeight;
-            const sectionTop = current.offsetTop - 120; // accounts for sticky header
-            const sectionId = current.getAttribute("id");
-            const navLinkEl = document.querySelector(`.nav-menu a[href*=${sectionId}]`);
-
-            if (navLinkEl) {
-                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+    sections.forEach(section => {
+        const sectionId = section.getAttribute("id");
+        const navLinkEl = document.querySelector(`.nav-menu a[href*="${sectionId}"]`);
+        
+        if (navLinkEl) {
+            ScrollTrigger.create({
+                trigger: section,
+                start: "top 140px",   // Trigger active state when top of section crosses header
+                end: "bottom 140px",  // Clear active state when section bottom leaves header area
+                onEnter: () => {
+                    navLinks.forEach(l => l.classList.remove("active"));
                     navLinkEl.classList.add("active");
-                } else {
-                    navLinkEl.classList.remove("active");
+                },
+                onEnterBack: () => {
+                    navLinks.forEach(l => l.classList.remove("active"));
+                    navLinkEl.classList.add("active");
                 }
-            }
-        });
-    }
-    window.addEventListener("scroll", scrollActiveIndicator);
+            });
+        }
+    });
 
     // ==========================================
     // 6. SEARCH & FILTER INTERACTIVES (Buy / Rent Switcher)
