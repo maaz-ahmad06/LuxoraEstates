@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     // ==========================================
-    // 0. GSAP FALLBACK (If CDNs are blocked/offline)
+    // 0. GSAP & SCROLLTRIGGER FALLBACK
     // ==========================================
     const preloader = document.getElementById("preloader");
     const loaderContent = document.querySelector(".loader-content");
 
-    if (typeof gsap === "undefined") {
-        console.warn("GSAP CDN load failed. Applying CSS layout fallback.");
+    if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") {
+        console.warn("GSAP or ScrollTrigger CDN load failed. Applying static layout fallback.");
         setTimeout(() => {
             if (preloader) preloader.style.display = "none";
             // Reveal all elements hidden by initial GSAP styles
@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Register GSAP plugins
     gsap.registerPlugin(ScrollTrigger);
+    console.log("GSAP and ScrollTrigger successfully initialized!");
 
     // ==========================================
     // 1. PAGE LOADER & ENTRY SEQUENCE
