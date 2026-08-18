@@ -1061,6 +1061,37 @@ button, input, select, textarea {
     .properties-grid .property-card {
         width: 310px;
     }
+
+    .properties-grid .property-card .property-image-wrapper {
+        height: 180px !important;
+    }
+
+    .properties-grid .property-card .property-details {
+        padding: 1.2rem !important;
+    }
+
+    .properties-grid .property-card .property-price {
+        font-size: 1.4rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+
+    .properties-grid .property-card .property-title {
+        font-size: 1.15rem !important;
+        margin-bottom: 0.2rem !important;
+    }
+
+    .properties-grid .property-card .property-location {
+        margin-bottom: 0.8rem !important;
+    }
+
+    .properties-grid .property-card .card-divider {
+        margin: 0.8rem 0 !important;
+    }
+
+    .properties-grid {
+        padding: 0.8rem 0 !important;
+        gap: 1.5rem !important;
+    }
 }
 
 .property-card {
