@@ -1,15 +1,35 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    // ==========================================
+    // 0. GSAP FALLBACK (If CDNs are blocked/offline)
+    // ==========================================
+    const preloader = document.getElementById("preloader");
+    const loaderContent = document.querySelector(".loader-content");
+
+    if (typeof gsap === "undefined") {
+        console.warn("GSAP CDN load failed. Applying CSS layout fallback.");
+        setTimeout(() => {
+            if (preloader) preloader.style.display = "none";
+            // Reveal all elements hidden by initial GSAP styles
+            const hiddenEls = document.querySelectorAll(
+                ".gsap-hero-fade, .gsap-hero-panel, .gsap-stat-card, .gsap-about-text, .gsap-about-badge, .gsap-about-feature, .gsap-service-header, .gsap-service-card, .gsap-prop-header, .gsap-prop-card, .gsap-test-anim, #gsap-contact-info, #gsap-contact-form"
+            );
+            hiddenEls.forEach(el => {
+                el.style.opacity = "1";
+                el.style.transform = "none";
+            });
+        }, 2500);
+        return;
+    }
+
     // Register GSAP plugins
     gsap.registerPlugin(ScrollTrigger);
 
     // ==========================================
     // 1. PAGE LOADER & ENTRY SEQUENCE
     // ==========================================
-    const preloader = document.getElementById("preloader");
     const leftPanel = document.querySelector(".left-panel");
     const rightPanel = document.querySelector(".right-panel");
-    const loaderContent = document.querySelector(".loader-content");
 
     // Hold loader for 2.5 seconds to build preloader logo animation
     setTimeout(() => {
