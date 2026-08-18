@@ -145,6 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     sections.forEach(section => {
         const sectionId = section.getAttribute("id");
+        if (sectionId === "properties") return; // Handled inside properties horizontal pin ScrollTrigger
         const navLinkEl = document.querySelector(`.nav-menu a[href*="${sectionId}"]`);
         
         if (navLinkEl) {
@@ -449,7 +450,18 @@ document.addEventListener("DOMContentLoaded", () => {
                     scrub: 1,
                     start: "top top",
                     end: () => `+=${grid.scrollWidth - scrollContainer.clientWidth}`,
-                    invalidateOnRefresh: true
+                    invalidateOnRefresh: true,
+                    onToggle: (self) => {
+                        const navLinkEl = document.querySelector(`.nav-menu a[href*="properties"]`);
+                        if (navLinkEl) {
+                            if (self.isActive) {
+                                navLinks.forEach(l => l.classList.remove("active"));
+                                navLinkEl.classList.add("active");
+                            } else {
+                                navLinkEl.classList.remove("active");
+                            }
+                        }
+                    }
                 }
             });
         });
@@ -474,6 +486,27 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 }
             );
+
+            // Active indicator trigger for mobile
+            ScrollTrigger.create({
+                trigger: ".properties-section",
+                start: "top 50%",
+                end: "bottom 50%",
+                onEnter: () => {
+                    const navLinkEl = document.querySelector(`.nav-menu a[href*="properties"]`);
+                    if (navLinkEl) {
+                        navLinks.forEach(l => l.classList.remove("active"));
+                        navLinkEl.classList.add("active");
+                    }
+                },
+                onEnterBack: () => {
+                    const navLinkEl = document.querySelector(`.nav-menu a[href*="properties"]`);
+                    if (navLinkEl) {
+                        navLinks.forEach(l => l.classList.remove("active"));
+                        navLinkEl.classList.add("active");
+                    }
+                }
+            });
         });
     }
 
