@@ -26,50 +26,33 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.registerPlugin(ScrollTrigger);
     console.log("GSAP and ScrollTrigger successfully initialized!");
 
-    // Initialize Lenis Smooth Scrolling (with safe checks)
-    let lenis;
-    if (typeof Lenis !== "undefined") {
-        lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'vertical',
-            gestureDirection: 'vertical',
-            smooth: true,
-            mouseMultiplier: 1,
-            smoothTouch: false,
-            touchMultiplier: 2,
-            infinite: false
-        });
+    // Custom smooth scrolling to anchor links with offset for sticky header
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#' || targetId === '') return;
+            const target = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
 
-        // Synchronize Lenis scrolling with ScrollTrigger
-        lenis.on('scroll', ScrollTrigger.update);
-
-        gsap.ticker.add((time) => {
-            lenis.raf(time * 1000);
-        });
-
-        gsap.ticker.lagSmoothing(0);
-
-        // Custom smooth scrolling to anchor links using Lenis
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const targetId = this.getAttribute('href');
-                if (targetId === '#' || targetId === '') return;
-                const target = document.querySelector(targetId);
-                if (target) {
-                    e.preventDefault();
-                    
-                    // Force ScrollTrigger updates before scroll transition
-                    ScrollTrigger.update();
-
-                    lenis.scrollTo(target, {
-                        offset: -80, // accounts for sticky header height
-                        duration: 1.2
-                    });
+                // Close mobile menu if active
+                const navToggle = document.getElementById("nav-toggle");
+                const navMenu = document.getElementById("nav-menu");
+                if (navToggle && navMenu) {
+                    navToggle.classList.remove("active");
+                    navMenu.classList.remove("active");
                 }
-            });
+
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - 80; // clears sticky header
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
         });
-    }
+    });
 
     // ==========================================
     // 1. PAGE LOADER & ENTRY SEQUENCE
