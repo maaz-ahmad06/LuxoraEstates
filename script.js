@@ -138,32 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ==========================================
-    // 5. SCROLL SECTIONS ACTIVE LINK INDICATOR (using ScrollTrigger)
-    // ==========================================
-    const sections = document.querySelectorAll("section[id]");
-
-    sections.forEach(section => {
-        const sectionId = section.getAttribute("id");
-        if (sectionId === "properties") return; // Handled inside properties horizontal pin ScrollTrigger
-        const navLinkEl = document.querySelector(`.nav-menu a[href*="${sectionId}"]`);
-        
-        if (navLinkEl) {
-            ScrollTrigger.create({
-                trigger: section,
-                start: "top 50%",   // Trigger active state when section top crosses screen center
-                end: "bottom 50%",  // Clear active state when section bottom leaves screen center
-                onEnter: () => {
-                    navLinks.forEach(l => l.classList.remove("active"));
-                    navLinkEl.classList.add("active");
-                },
-                onEnterBack: () => {
-                    navLinks.forEach(l => l.classList.remove("active"));
-                    navLinkEl.classList.add("active");
-                }
-            });
-        }
-    });
+    // Active indicator triggers moved to bottom of file for ScrollTrigger calculations order
 
     // ==========================================
     // 6. SEARCH & FILTER INTERACTIVES (Buy / Rent Switcher)
@@ -797,4 +772,31 @@ document.addEventListener("DOMContentLoaded", () => {
             if (e.target === overlay) closeNotification();
         });
     }
+
+    // ==========================================
+    // 5. SCROLL SECTIONS ACTIVE LINK INDICATOR (using ScrollTrigger)
+    // ==========================================
+    const sections = document.querySelectorAll("section[id]");
+
+    sections.forEach(section => {
+        const sectionId = section.getAttribute("id");
+        if (sectionId === "properties") return; // Handled inside properties horizontal pin ScrollTrigger
+        const navLinkEl = document.querySelector(`.nav-menu a[href*="${sectionId}"]`);
+        
+        if (navLinkEl) {
+            ScrollTrigger.create({
+                trigger: section,
+                start: "top 50%",   // Trigger active state when section top crosses screen center
+                end: "bottom 50%",  // Clear active state when section bottom leaves screen center
+                onEnter: () => {
+                    navLinks.forEach(l => l.classList.remove("active"));
+                    navLinkEl.classList.add("active");
+                },
+                onEnterBack: () => {
+                    navLinks.forEach(l => l.classList.remove("active"));
+                    navLinkEl.classList.add("active");
+                }
+            });
+        }
+    });
 });
