@@ -371,20 +371,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 opacity: 1,
                 duration: 0.6,
                 scrollTrigger: {
-                    trigger: ".properties-section",
-                    start: "top 75%"
+                    trigger: scrollContainer,
+                    start: "top 85%"
                 }
             });
 
-            // Horizontal pin scroll timeline (pinned to top of screen)
+            // Horizontal pin scroll timeline (pinned to center of screen)
             gsap.to(grid, {
                 x: () => -(grid.scrollWidth - scrollContainer.clientWidth),
                 ease: "none",
                 scrollTrigger: {
-                    trigger: ".properties-section",
+                    trigger: scrollContainer,
                     pin: true,
                     scrub: 1,
-                    start: "top top",
+                    start: "center center",
                     end: () => `+=${grid.scrollWidth - scrollContainer.clientWidth}`,
                     invalidateOnRefresh: true,
                     onToggle: (self) => {

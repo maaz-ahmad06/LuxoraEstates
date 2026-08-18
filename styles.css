@@ -1004,27 +1004,17 @@ button, input, select, textarea {
 }
 
 .properties-section {
-    height: 100vh;
-    min-height: 620px; /* Fits comfortably on standard and smaller laptop screens */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
     position: relative;
-    padding: 0 !important;
 }
 
 .properties-section .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     width: 92%;
     max-width: 1280px;
-    height: 100%;
+    margin: 0 auto;
 }
 
 .properties-section .section-header {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     text-align: left;
     width: 100%;
 }
