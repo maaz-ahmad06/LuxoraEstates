@@ -376,7 +376,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
 
-            // Horizontal pin scroll timeline (pinned below the sticky navbar)
+            // Horizontal pin scroll timeline (pinned to center of screen)
             gsap.to(grid, {
                 x: () => -(grid.scrollWidth - scrollContainer.clientWidth),
                 ease: "none",
@@ -384,7 +384,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     trigger: scrollContainer,
                     pin: true,
                     scrub: 1,
-                    start: "top 130px", // Pinned 130px from top of screen to clear sticky navbar (approx 80px)
+                    start: "center center",
                     end: () => `+=${grid.scrollWidth - scrollContainer.clientWidth}`,
                     invalidateOnRefresh: true,
                     onToggle: (self) => {

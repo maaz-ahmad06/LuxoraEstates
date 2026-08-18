@@ -1256,6 +1256,40 @@ button, input, select, textarea {
     color: var(--text-dark);
 }
 
+/* Compact properties layout for small vertical heights (e.g. laptop viewports under 768px height) */
+@media (max-height: 720px) and (min-width: 1025px) {
+    .property-image-wrapper {
+        height: 180px !important;
+    }
+    
+    .property-details {
+        padding: 1.2rem !important;
+    }
+    
+    .property-price {
+        font-size: 1.4rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+    
+    .property-title {
+        font-size: 1.15rem !important;
+        margin-bottom: 0.2rem !important;
+    }
+    
+    .property-location {
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .card-divider {
+        margin: 0.8rem 0 !important;
+    }
+    
+    .properties-grid {
+        padding: 0.8rem 0 !important;
+        gap: 1.5rem !important;
+    }
+}
+
 /* ==========================================================================
    9. TESTIMONIALS SECTION
    ========================================================================== */
