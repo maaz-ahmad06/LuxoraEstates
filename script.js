@@ -26,6 +26,51 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.registerPlugin(ScrollTrigger);
     console.log("GSAP and ScrollTrigger successfully initialized!");
 
+    // Initialize Lenis Smooth Scrolling (with safe checks)
+    let lenis;
+    if (typeof Lenis !== "undefined") {
+        lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false
+        });
+
+        // Synchronize Lenis scrolling with ScrollTrigger
+        lenis.on('scroll', ScrollTrigger.update);
+
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+
+        gsap.ticker.lagSmoothing(0);
+
+        // Custom smooth scrolling to anchor links using Lenis
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#' || targetId === '') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    
+                    // Force ScrollTrigger updates before scroll transition
+                    ScrollTrigger.update();
+
+                    lenis.scrollTo(target, {
+                        offset: -80, // accounts for sticky header height
+                        duration: 1.2
+                    });
+                }
+            });
+        });
+    }
+
     // ==========================================
     // 1. PAGE LOADER & ENTRY SEQUENCE
     // ==========================================
@@ -358,91 +403,43 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollContainer = document.querySelector(".properties-scroll-container");
 
     if (grid && scrollContainer) {
-        // Set up responsive media queries using GSAP matchMedia
-        let mm = gsap.matchMedia();
+        // Set opacity of cards to visible (since grid opacity is controlled by GSAP)
+        gsap.set(".gsap-prop-card", { opacity: 1 });
+        gsap.set(grid, { opacity: 0 });
 
-        // 1. DESKTOP: Row horizontal pin scroll
-        mm.add("(min-width: 1025px)", () => {
-            gsap.set(".gsap-prop-card", { opacity: 1 });
-            gsap.set(grid, { opacity: 0 });
+        // Fade in grid on entry
+        gsap.to(grid, {
+            opacity: 1,
+            duration: 0.6,
+            scrollTrigger: {
+                trigger: scrollContainer,
+                start: "top 85%"
+            }
+        });
 
-            // Fade in grid on entry
-            gsap.to(grid, {
-                opacity: 1,
-                duration: 0.6,
-                scrollTrigger: {
-                    trigger: scrollContainer,
-                    start: "top 85%"
-                }
-            });
-
-            // Horizontal pin scroll timeline (pinned to center of screen)
-            gsap.to(grid, {
-                x: () => -(grid.scrollWidth - scrollContainer.clientWidth),
-                ease: "none",
-                scrollTrigger: {
-                    trigger: scrollContainer,
-                    pin: true,
-                    scrub: 1,
-                    start: "center center",
-                    end: () => `+=${grid.scrollWidth - scrollContainer.clientWidth}`,
-                    invalidateOnRefresh: true,
-                    onToggle: (self) => {
-                        const navLinkEl = document.querySelector(`.nav-menu a[href*="properties"]`);
-                        if (navLinkEl) {
-                            if (self.isActive) {
-                                navLinks.forEach(l => l.classList.remove("active"));
-                                navLinkEl.classList.add("active");
-                            } else {
-                                navLinkEl.classList.remove("active");
-                            }
+        // Horizontal pin scroll timeline (pinned to center of screen globally on all devices)
+        gsap.to(grid, {
+            x: () => -(grid.scrollWidth - scrollContainer.clientWidth),
+            ease: "none",
+            scrollTrigger: {
+                trigger: scrollContainer,
+                pin: true,
+                scrub: 1,
+                start: "center center",
+                end: () => `+=${grid.scrollWidth - scrollContainer.clientWidth}`,
+                invalidateOnRefresh: true,
+                onToggle: (self) => {
+                    const navLinkEl = document.querySelector(`.nav-menu a[href*="properties"]`);
+                    if (navLinkEl) {
+                        if (self.isActive) {
+                            navLinks.forEach(l => l.classList.remove("active"));
+                            navLinkEl.classList.add("active");
+                        } else {
+                            navLinkEl.classList.remove("active");
                         }
                     }
                 }
-            });
-        });
-
-        // 2. TABLET/MOBILE: Swipe layout with vertical stagger reveal
-        mm.add("(max-width: 1024px)", () => {
-            // Clear inline desktop translations to maintain layout
-            gsap.set(grid, { clearProps: "all" });
-            gsap.set(".gsap-prop-card", { clearProps: "opacity,transform" });
-
-            gsap.fromTo(".gsap-prop-card",
-                { y: 50, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 1,
-                    ease: "power3.out",
-                    stagger: 0.15,
-                    scrollTrigger: {
-                        trigger: ".properties-section",
-                        start: "top 75%"
-                    }
-                }
-            );
-
-            // Active indicator trigger for mobile
-            ScrollTrigger.create({
-                trigger: ".properties-section",
-                start: "top 50%",
-                end: "bottom 50%",
-                onEnter: () => {
-                    const navLinkEl = document.querySelector(`.nav-menu a[href*="properties"]`);
-                    if (navLinkEl) {
-                        navLinks.forEach(l => l.classList.remove("active"));
-                        navLinkEl.classList.add("active");
-                    }
-                },
-                onEnterBack: () => {
-                    const navLinkEl = document.querySelector(`.nav-menu a[href*="properties"]`);
-                    if (navLinkEl) {
-                        navLinks.forEach(l => l.classList.remove("active"));
-                        navLinkEl.classList.add("active");
-                    }
-                }
-            });
+            }
         });
     }
 

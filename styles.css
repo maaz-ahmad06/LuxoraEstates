@@ -1054,18 +1054,8 @@ button, input, select, textarea {
     }
     
     .properties-scroll-container {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 1rem;
-    }
-
-    .properties-scroll-container::-webkit-scrollbar {
-        height: 6px;
-    }
-
-    .properties-scroll-container::-webkit-scrollbar-thumb {
-        background: #CBD5E1;
-        border-radius: var(--radius-full);
+        overflow: hidden !important;
+        width: 100%;
     }
 
     .properties-grid .property-card {
