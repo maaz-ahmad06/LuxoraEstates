@@ -420,32 +420,59 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollContainer = document.querySelector(".properties-scroll-container");
 
     if (grid && scrollContainer) {
-        // Make cards inside the grid visible (GSAP will handle grid opacity and translation)
-        gsap.set(".gsap-prop-card", { opacity: 1 });
-        gsap.set(grid, { opacity: 0 });
+        // Set up responsive media queries using GSAP matchMedia
+        let mm = gsap.matchMedia();
 
-        // Fade in grid on section entrance
-        gsap.to(grid, {
-            opacity: 1,
-            duration: 0.6,
-            scrollTrigger: {
-                trigger: ".properties-section",
-                start: "top 75%"
-            }
+        // 1. DESKTOP: Row horizontal pin scroll
+        mm.add("(min-width: 1025px)", () => {
+            gsap.set(".gsap-prop-card", { opacity: 1 });
+            gsap.set(grid, { opacity: 0 });
+
+            // Fade in grid on entry
+            gsap.to(grid, {
+                opacity: 1,
+                duration: 0.6,
+                scrollTrigger: {
+                    trigger: ".properties-section",
+                    start: "top 75%"
+                }
+            });
+
+            // Horizontal pin scroll timeline (pinned to top of screen)
+            gsap.to(grid, {
+                x: () => -(grid.scrollWidth - scrollContainer.clientWidth),
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".properties-section",
+                    pin: true,
+                    scrub: 1,
+                    start: "top top",
+                    end: () => `+=${grid.scrollWidth - scrollContainer.clientWidth}`,
+                    invalidateOnRefresh: true
+                }
+            });
         });
 
-        // Horizontal pin scroll timeline
-        gsap.to(grid, {
-            x: () => -(grid.scrollWidth - scrollContainer.clientWidth),
-            ease: "none",
-            scrollTrigger: {
-                trigger: ".properties-section",
-                pin: true,
-                scrub: 1,
-                start: "top top",
-                end: () => `+=${grid.scrollWidth - scrollContainer.clientWidth}`,
-                invalidateOnRefresh: true
-            }
+        // 2. TABLET/MOBILE: Swipe layout with vertical stagger reveal
+        mm.add("(max-width: 1024px)", () => {
+            // Clear inline desktop translations to maintain layout
+            gsap.set(grid, { clearProps: "all" });
+            gsap.set(".gsap-prop-card", { clearProps: "opacity,transform" });
+
+            gsap.fromTo(".gsap-prop-card",
+                { y: 50, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    ease: "power3.out",
+                    stagger: 0.15,
+                    scrollTrigger: {
+                        trigger: ".properties-section",
+                        start: "top 75%"
+                    }
+                }
+            );
         });
     }
 
