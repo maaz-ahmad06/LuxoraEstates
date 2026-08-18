@@ -168,47 +168,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ==========================================
-    // 7. PROPERTY GRID FILTERING
+    // 7. PROPERTY GRID FILTERING (Removed - Simplified layout)
     // ==========================================
-    const filterButtons = document.querySelectorAll(".filter-btn");
-    const propertyCards = document.querySelectorAll(".property-card");
-
-    filterButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
-            filterButtons.forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
-
-            const filterValue = btn.getAttribute("data-filter");
-
-            propertyCards.forEach(card => {
-                const category = card.getAttribute("data-category");
-                
-                if (filterValue === "all" || category === filterValue) {
-                    card.style.display = "block";
-                    gsap.fromTo(card,
-                        { opacity: 0, scale: 0.9, y: 15 },
-                        { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "power2.out", clearProps: "transform" }
-                    );
-                } else {
-                    gsap.to(card, {
-                        opacity: 0,
-                        scale: 0.9,
-                        y: 15,
-                        duration: 0.3,
-                        ease: "power2.in",
-                        onComplete: () => {
-                            card.style.display = "none";
-                        }
-                    });
-                }
-            });
-            
-            // Refresh ScrollTrigger calculations after card toggle transitions finish
-            setTimeout(() => {
-                ScrollTrigger.refresh();
-            }, 350);
-        });
-    });
 
     // Wishlist Heart Interaction
     const wishlistBtns = document.querySelectorAll(".wishlist-btn");
